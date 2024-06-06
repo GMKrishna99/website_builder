@@ -3,12 +3,14 @@ import { Nunito } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import "./globals.css";
+import { ThemeProvider } from "./providers/theme-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Plura",
-  description: "Plura is the app to build your websites by doing just drag & Drop",
+  description:
+    "Plura is the app to build your websites by doing just drag & Drop",
 };
 
 export default function RootLayout({
@@ -18,8 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
-      <html lang="en">
-        <body className={nunito.className}>{children}</body>
+      <html lang="en" suppressHydrationWarning>
+        <body className={nunito.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
