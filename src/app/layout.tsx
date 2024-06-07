@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import "./globals.css";
 import { ThemeProvider } from "./providers/theme-provider";
 
-const nunito = Nunito({ subsets: ["latin"] });
+const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Plura",
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en" suppressHydrationWarning>
-        <body className={nunito.className}>
+        <body className={font.className}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
