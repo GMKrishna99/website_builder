@@ -76,8 +76,8 @@ export default function Home() {
                 <Link
                   href={`/agency?plan=${card.priceId}`}
                   className={clsx(
-                    "w-full text-center bg-primary p-2 rounded-md hover:bg-muted-foreground transition-all",
-                    { "!bg-muted-foreground": card.title === "Unlimited Saas" }
+                    "w-full text-center bg-primary p-2 rounded-md hover:bg-primary transition-all",
+                    { "!bg-muted-foreground": card.title !== "Unlimited Saas" }
                   )}
                 >
                   Get Started
